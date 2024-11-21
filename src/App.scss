@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap');
+
+/* Variables */
+
+$dullRed: hsl(0, 36%, 70%);
+$brightRed: hsl(0, 93%, 68%);
+$grayRed: hsl(0, 6%, 24%);
+$gradientColor1: hsl(0, 0%, 100%);
+$gradientColor2: hsl(0, 100%, 98%);
+$gradientColor3: hsl(0, 80%, 86%);
+$gradientColor4: hsl(0, 74%, 74%);
+$gradient1: linear-gradient(135deg, $gradientColor1, $gradientColor2);
+$gradient2: linear-gradient(135deg, $gradientColor3, $gradientColor4);
+$fontSize: 16px;
+$fontFamily: 'Josefin Sans', sans-serif;
+$fontWeightLight: 300;
+$fontWeightMedium: 400;
+$fontWeightHeavy: 600;
+$backgroundPattern: url("/images/bg-pattern-desktop.svg");
+$imageMobile: url("/images/hero-mobile.jpg");
+$imageDesktop: url("/images/hero-desktop.jpg");
+
+
+/* Mobile Design */
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#root {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    font-weight: $fontWeightMedium;
+    background: $gradient1;
+
+    header {
+        flex: 0.2;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 2rem;
+
+        img {
+            height: 1.4rem;
+        }
+    }
+
+    .image-woman {
+        width: 100%;
+        height: 15rem;
+        background-image: $imageMobile;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 0 0;
+    }
+
+    main {
+        flex: 3;
+        padding: 4rem 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+        h1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+
+            span:nth-child(1) {
+                color: $dullRed;
+                font-weight: $fontWeightLight;
+                font-size: 2.5rem;
+                letter-spacing: 0.4rem;
+            }
+
+            span:nth-child(2),
+            span:nth-child(3) {
+                color: $grayRed;
+                font-size: 2.5rem;
+                text-align: center;
+                letter-spacing: 0.5rem;
+            }
+        }
+
+        p {
+            margin: 1rem 0rem;
+            text-align: center;
+            color: $dullRed;
+            font-size: 0.9rem;
+            line-height: 1.3rem;
+        }
+
+        form {
+            width: 100%;
+            height: 6rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+
+            input {
+                border: 1px solid $dullRed;
+                border-radius: 2rem;
+                width: 95%;
+                height: 2.7rem;
+                background-color: transparent;
+                padding-left: 1.5rem;
+                color: $grayRed;
+
+                &::placeholder {
+                    color: $dullRed;
+                    font-weight: $fontWeightLight;
+                    font-size: 0.8rem;
+                    font-family: $fontFamily;
+                }
+
+                &:user-invalid {
+                    border: 0.1rem solid $brightRed;
+                }
+            }
+
+            span {
+                display: none;
+                position: absolute;
+                bottom: 0;
+                padding-top: 1rem;
+                padding-left: 1rem;
+                font-size: 0.85rem;
+                color: $brightRed;
+            }
+
+            img:not(button img) {
+                position: absolute;
+                height: auto;
+                display: none;
+                right: 4.5rem;
+            }
+
+            .show-error {
+                display: block;
+            }
+
+            button {
+                z-index: 1;
+                position: absolute;
+                right: 0;
+                border: none;
+                background: $gradient2;
+                border-radius: 2rem;
+                width: 4rem;
+                height: 3rem;
+                box-shadow: 0rem 0.5rem 2rem $gradientColor3;
+
+                &:hover {
+                    cursor: pointer;
+                    background: none;
+                    // background-color: $gradientColor3;
+                    background: linear-gradient(135deg, #fad6d6, #f8cccd);
+                    box-shadow: 0rem 0.5rem 2.5rem $gradientColor3;
+                    height: 3.2rem;
+                    width: 4.1rem;
+                }
+            }
+        }
+    }
+}
+
+/* Desktop Design */
+
+@media (min-width:1100px) {
+    #root {
+        position: relative;
+        display: block;
+        background-image: $backgroundPattern, $gradient1;
+        background-size: cover;
+        background-position: 0 0, 0 0;
+        background-repeat: no-repeat, repeat;
+
+        .image-woman {
+            background-image: $imageDesktop;
+            background-position: 9px 0;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 43%;
+            height: 100%;
+            background-size: cover;
+        }
+
+        header {
+            position: absolute;
+            top: 2rem;
+            left: 8.2rem;
+
+            img {
+                width: 10rem;
+                height: 2.1rem;
+            }
+        }
+
+        main {
+            position: absolute;
+            top: 10.5rem;
+            left: 8.2rem;
+            align-items: flex-start;
+            gap: 0.8rem;
+
+            h1 {
+                align-items: flex-start;
+                gap: 0.35rem;
+
+                span:nth-child(1) {
+                    font-size: 4rem;
+                    letter-spacing: 1rem;
+                }
+
+                span:nth-child(2),
+                span:nth-child(3) {
+                    font-size: 4rem;
+                    letter-spacing: 1rem;
+                }
+            }
+
+            p {
+                text-align: left;
+                font-size: 1rem;
+                line-height: 1.7rem;
+                width: 27rem;
+            }
+
+            form {
+                width: 27rem;
+
+                input {
+                    height: 3.5rem;
+                    background: transparent;
+
+                    &::placeholder {
+                        font-size: 1rem;
+                    }
+                }
+
+                span {}
+
+                img:not(button img) {
+                    right: 6rem;
+                }
+
+                button {
+                    border-radius: 2rem;
+                    width: 6.5rem;
+                    height: 3.7rem;
+                    right: -1rem;
+
+                    &:hover {
+                        height: 3.8rem;
+                        width: 6.6rem;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-height:800px) {
+        #root {
+            background-size: auto;
+            width: 100%;
+            height: 100%;
+    
+            .image-woman {
+                background-image: $imageDesktop;
+                background-position: 9px 0;
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 43%;
+                height: 100%;
+                background-size: cover;
+            }
+        }
+    }
+}
+
+/* Media queries */
+
+@media (min-height:800px) {
+    #root {
+        height: 100%;
+    }
+}
+
+@media (min-height:1000px) and (max-width:1100px) {
+    #root {
+        .image-woman {
+            height: 40%;
+        }
+    }
+}
+
